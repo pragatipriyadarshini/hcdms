@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HCDMS</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="auth-screen" id="authPage">
+      <section class="auth-view" id="loginView">
+        <form class="auth-card" id="loginForm">
+          <div class="auth-brand">
+            <span class="brand-mark">H</span>
+            <strong>HCDMS</strong>
+          </div>
+          <div class="form-heading">
+            <h1>Welcome back</h1>
+            <p>Sign in to your hospital denial workspace.</p>
+          </div>
+
+          <label>
+            Email
+            <input name="email" type="email" value="admin@test-hospital-001.test" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" value="TestPass123!" autocomplete="current-password" required />
+          </label>
+
+          <button class="button primary" type="submit">Sign in</button>
+          <button class="button quiet" id="showSignupButton" type="button">Create workspace</button>
+        </form>
+      </section>
+
+      <section class="auth-view hidden" id="signupView">
+        <form class="auth-card" id="signupForm">
+          <div class="auth-brand">
+            <span class="brand-mark">H</span>
+            <strong>HCDMS</strong>
+          </div>
+          <div class="form-heading">
+            <h1>Create workspace</h1>
+            <p>Register a tenant-isolated hospital workspace.</p>
+          </div>
+
+          <label>
+            Admin name
+            <input name="name" type="text" value="Test Admin" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" value="admin@test-hospital-001.test" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" value="TestPass123!" autocomplete="new-password" required />
+          </label>
+          <label>
+            Hospital name
+            <input name="hospitalName" type="text" value="Test Hospital 001" required />
+          </label>
+          <label>
+            Hospital domain
+            <input name="hospitalDomain" type="text" value="test-hospital-001.test" required />
+          </label>
+
+          <button class="button primary" type="submit">Create workspace</button>
+          <button class="button quiet" id="showLoginButton" type="button">Back to sign in</button>
+        </form>
+      </section>
+    </main>
+
+    <section class="dashboard-shell hidden" id="dashboardView">
+      <aside class="sidebar">
+        <div class="brand-lockup">
+          <span class="brand-mark">H</span>
+          <div>
+            <strong>HCDMS</strong>
+            <span id="hospitalBadge">Hospital</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav" aria-label="Primary">
+          <button class="nav-button active" type="button">Overview</button>
+        </nav>
+      </aside>
+
+      <div class="dashboard-main">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Claims operations</p>
+            <h1>Denial command center</h1>
+          </div>
+          <div class="header-actions">
+            <button class="button primary" id="uploadButton" type="button">Upload CSV</button>
+            <input id="csvInput" type="file" accept=".csv,text/csv" multiple hidden />
+            <button class="button secondary" id="profileButton" type="button">Profile</button>
+            <button class="button secondary" id="logoutButton" type="button">Logout</button>
+          </div>
+        </header>
+
+        <main class="dashboard-content">
+          <section class="metric-grid" aria-label="Claim metrics">
+            <article class="stat-card risk">
+              <span>Open denials</span>
+              <strong>0</strong>
+              <small>0% denial rate</small>
+            </article>
+            <article class="stat-card revenue">
+              <span>Recovered revenue</span>
+              <strong>$0</strong>
+              <small>Approved claims</small>
+            </article>
+            <article class="stat-card pending">
+              <span>Pending claims</span>
+              <strong>0</strong>
+              <small>Awaiting adjudication</small>
+            </article>
+            <article class="stat-card files">
+              <span>Files today</span>
+              <strong id="filesIngested">0</strong>
+              <small>Uploaded today</small>
+            </article>
+          </section>
+
+          <section class="insight-grid">
+            <article class="panel chart-panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Denial volume</h2>
+                  <p>New denials by week</p>
+                </div>
+              </div>
+              <div class="bar-chart" aria-label="Denial volume chart"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Denial codes</h2>
+                  <p>Reason code and denied value</p>
+                </div>
+              </div>
+              <div class="code-list">
+                <div><span>No denials yet</span><strong>0</strong></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Payers</h2>
+                  <p>Denied claims by payer</p>
+                </div>
+              </div>
+              <div class="payer-list">
+                <div><span>No payer denials yet</span><strong>0</strong></div>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
